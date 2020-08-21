@@ -1,0 +1,24 @@
+
+<h1>New Game</h1>
+<!-- <div><%= @letters.join %></div> -->
+
+
+
+
+<div class="display">
+  <% @letters.each do |letter| %>
+    <div class="letter"><%= letter %></div>
+  <% end %>
+</div>
+
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <!-- sert à verifier que les data envoyés viennent de mon site à moi et pas de l'ext -->
+   <!-- chaque input est une valeur -->
+  <%= hidden_field_tag :grid, @letters %>
+  <!-- params[:grid] => @letters -->
+  <p>Quel est le mot le plus long que vous pouvez trouver?</p>
+  <input type="text" name="guess" placeholder="mot le plus long" id="text_input">
+  <input type="submit" id="submit_input">
+</form>
+
